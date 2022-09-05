@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="TODO"></ul>
+
+    <form action="">
+      <input type="text" />
+      <button>Add</button>
+    </form>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", render);
+
+      let tasks = [];
+      const list = document.getElementById("TODO");
+      const input = document.querySelector("input");
+      const button = document.querySelector("button");
+
+      button.onclick = handleClickAdd;
+
+      function render() {
+        list.innerHTML = "";
+
+        for (let index = 0; index < tasks.length; index++) {
+          const li = document.createElement("li");
+          const liButton = document.createElement("button");
+          liButton.innerText = "X";
+
+          li.textContent = tasks[index];
+          list.append(li);
+          li.append(liButton);
+
+          li.onclick = () => handleClickRemove(index);
+        }
+      }
+
+      function handleClickRemove(index) {
+        tasks.splice(index, 1);
+        render();
+      }
+
+      function handleClickAdd() {
+        event.preventDefault();
+
+        tasks.push(input.value);
+        input.value = "";
+        render();
+      }
+    </script>
+  </body>
+</html>
