@@ -25,10 +25,7 @@ function MyListItem({ fullName, text, date, deleteComment }) {
             timeStyle: "short",
           }).format(new Date(date))}`}
           secondary={text}
-        >
-          {" "}
-          {text}
-        </ListItemText>
+        />
 
         <IconButton aria-label="delete" onClick={() => deleteComment(date)}>
           <DeleteIcon />
