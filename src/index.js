@@ -6,7 +6,7 @@ import "./index.css";
 // import App from "./tutorial-2/App";
 // import App from "./tutorial-3/App";
 // import App from "./tutorial-4 (generate)/App";
-import App from "./tutorial-5/App";
+import App from "./tutorial-5 (feed)/App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);

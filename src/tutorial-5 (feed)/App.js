@@ -1,7 +1,6 @@
 import React from "react";
 
 import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -12,33 +11,36 @@ function App() {
   const [comments, setComment] = React.useState([]);
   const [inputValues, setValues] = React.useState({});
 
-  const storageCommentsRef = React.useRef([]);
   const isMountedRef = React.useRef(false);
 
   /*    не срабатывает на этапе монтирования из-за рефа isMountedRef; 
-        при изменении массива comments записывает его в localStorage, а также в storageCommentsRef
+        при изменении массива comments записывает его в localStorage
     */
   React.useEffect(() => {
     if (!isMountedRef.current) return;
 
     localStorage.setItem("comments", JSON.stringify(comments));
-    storageCommentsRef.current = comments;
   }, [comments]);
 
-  /*    при монтировании инициализируем storageCommentsRef или пустым массивом, если localStorage пустой по ключу comments, 
-       или parsed содержимым, и меняем реф isMountedRef на true, позволяя работать второму useEffect
+  /*    если localStorage не пустой по ключу comments, инициализируем 
+        массив comments parsed содержимым localStorage, меняем isMountedRef на true,
+        позволяя работать второму useEffect
   */
   React.useEffect(() => {
-    if (localStorage.getItem("comments") !== null)
-      storageCommentsRef.current = JSON.parse(localStorage.getItem("comments"));
-
+    if (localStorage.getItem("comments") !== null) {
+      setComment(JSON.parse(localStorage.getItem("comments")));
+    }
     isMountedRef.current = true;
+
+    return () => {
+      isMountedRef.current = false;
+    };
   }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    setComment((prev) => [...prev, { ...inputValues, createdAt: new Date() }]);
+    setComment((prev) => [{ ...inputValues, createdAt: new Date() }, ...prev]);
   };
 
   const handleChange = (event) => {
@@ -47,20 +49,24 @@ function App() {
     setValues((prev) => ({ ...prev, [field]: value }));
   };
 
+  const handleDelete = (date) => {
+    setComment(comments.filter((comment) => comment.createdAt !== date));
+  };
+
   return (
     <div style={{ width: 600, margin: "0 auto" }}>
-      {/* {storageCommentsRef.current.map((comment) => (
-        <h3>{comment}</h3>
-      ))} */}
-
-      {/* <List>
-        {comments.map((comment) => (
-          <>
-            <MyListItem />
-            <Divider variant="inset" component="li" />
-          </>
+      {comments.length > 0 && <h2>Отзывы</h2>}
+      <List>
+        {comments.map(({ createdAt, fullName, text }) => (
+          <MyListItem
+            key={createdAt}
+            fullName={fullName}
+            text={text}
+            date={createdAt}
+            deleteComment={handleDelete}
+          />
         ))}
-      </List> */}
+      </List>
 
       <h2>Обратная связь:</h2>
 
