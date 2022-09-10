@@ -9,7 +9,11 @@ import MyListItem from "./components/MyListItem";
 
 function App() {
   const [comments, setComment] = React.useState([]);
-  const [inputValues, setValues] = React.useState({});
+  const [inputValues, setValues] = React.useState({
+    fullName: "",
+    email: "",
+    text: "",
+  });
 
   const isMountedRef = React.useRef(false);
 
@@ -41,6 +45,7 @@ function App() {
     event.preventDefault();
 
     setComment((prev) => [{ ...inputValues, createdAt: new Date() }, ...prev]);
+    setValues({ fullName: "", email: "", text: "" });
   };
 
   const handleChange = (event) => {
@@ -55,19 +60,6 @@ function App() {
 
   return (
     <div style={{ width: 600, margin: "0 auto" }}>
-      {comments.length > 0 && <h2>Отзывы</h2>}
-      <List>
-        {comments.map(({ createdAt, fullName, text }) => (
-          <MyListItem
-            key={createdAt}
-            fullName={fullName}
-            text={text}
-            date={createdAt}
-            deleteComment={handleDelete}
-          />
-        ))}
-      </List>
-
       <h2>Обратная связь:</h2>
 
       <Box
@@ -83,6 +75,7 @@ function App() {
           id="outlined-basic"
           label="Имя"
           name="fullName"
+          value={inputValues.fullName}
           onChange={handleChange}
         />
         <TextField
@@ -91,6 +84,7 @@ function App() {
           id="outlined-basic"
           label="Почта"
           name="email"
+          value={inputValues.email}
           onChange={handleChange}
         />
         <TextField
@@ -101,12 +95,26 @@ function App() {
           multiline
           rows={4}
           name="text"
+          value={inputValues.text}
           onChange={handleChange}
         />
         <Button fullWidth variant="contained" type="submit">
           ОТПРАВИТЬ
         </Button>
       </Box>
+
+      {comments.length > 0 && <h2>Отзывы</h2>}
+      <List>
+        {comments.map(({ createdAt, fullName, text }) => (
+          <MyListItem
+            key={createdAt}
+            fullName={fullName}
+            text={text}
+            date={createdAt}
+            deleteComment={handleDelete}
+          />
+        ))}
+      </List>
     </div>
   );
 }
