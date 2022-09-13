@@ -3,6 +3,17 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup
+  .object({
+    firstName: yup.string().min(4, "Имя от 4 символов"),
+    lastName: yup.string().required("Это обязательное поле"),
+    email: yup.string().email().required("Это обязательное поле"),
+    password: yup.string().min(6, "Пароль от 6 символов").required(),
+  })
+  .required();
 
 function App() {
   const {
@@ -10,11 +21,15 @@ function App() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit = (data) => {
     console.log(data);
   };
+
+  console.log("errors:", errors);
 
   return (
     <form
@@ -33,10 +48,7 @@ function App() {
         fullWidth
         label="Firstname"
         variant="standard"
-        {...register("firstName", {
-          required: "Обязательное поле",
-          maxLength: 80,
-        })}
+        {...register("firstName")}
         helperText={errors.firstName && errors.firstName.message}
         error={!!errors.firstName}
       />
@@ -45,10 +57,7 @@ function App() {
         fullWidth
         label="Lastname"
         variant="standard"
-        {...register("lastName", {
-          required: "Обязательное поле",
-          maxLength: 80,
-        })}
+        {...register("lastName")}
         helperText={errors.lastName && errors.lastName.message}
         error={!!errors.lastName}
       />
@@ -58,10 +67,7 @@ function App() {
         fullWidth
         label="password"
         variant="standard"
-        {...register("password", {
-          required: "Обязательное поле",
-          minLength: { value: 6, message: "PW at least 6 symbols" },
-        })}
+        {...register("password")}
         helperText={errors.password && errors.password.message}
         error={!!errors.password}
       />
@@ -70,13 +76,7 @@ function App() {
         fullWidth
         label="email"
         variant="standard"
-        {...register("email", {
-          required: "Обязательное поле",
-          pattern: {
-            value: /^\S+@\S+$/i,
-            message: "Wrong email",
-          },
-        })}
+        {...register("email")}
         helperText={errors.email && errors.email.message}
         error={!!errors.email}
       />
