@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+# React practice [course](https://github.com/Archakov06)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+####Contents:
 
-## Available Scripts
+- **tutorial-1**: class and functional components, render data from props;
+- **tutorial-2**: first form (authentication), pure JS interaction with inputs and submit button;
+- **tutorial-3**: Tabs, component for each array element, only one drop-down active Tab;
+- **tutorial-4**: generate random phraze application, conditional component rendering;
+- **tutorial-5**: pure JS todo list with delete buttons;
+- **tutorial-6**: leave comment form, material UI components, localStorage usage:
+  - form submitting saves comment in localStorage;
+  - render comments list below form (from most recent ones to less);
+  - each comment has delete button;
+  - when mounting, if localStorage has not empty comments field, initial comments list would be initialized with its value;
+  - useEffect, isMountedRef usage;
+- **tutorial-7**: get and create users with mockapi, upload files to express server:
 
-In the project directory, you can run:
+  - requests with _axios_;
+  - data generated with [mockapi](https://mockapi.io);
+  - parsing `multipart/form-data` with [multer](https://www.npmjs.com/package/multer) or [express-fileupload](https://www.npmjs.com/package/express-fileupload) middleware and saving to `public` folder;
+  - access uploaded files with `express-static` middleware;
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **multistep-registration-form**:
+  - _react-hook-form_ (RHF further) with _yup_ validation;
+  - `useFormContext` hook to provide inputs with _RHF_ methods;
+  - _react-router-dom_ and _useNavigate_ hook;
