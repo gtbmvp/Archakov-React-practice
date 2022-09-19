@@ -1,7 +1,6 @@
 import React from "react";
 import { Nav, Button } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 
 const Header = ({ context }) => {
   const [isAuth, setIsAuth] = React.useState(false);
@@ -12,12 +11,10 @@ const Header = ({ context }) => {
 
   React.useEffect(() => {
     if (localStorage.getItem("token") === appToken) {
-      console.log(true);
       setIsAuth(true);
     } else {
       setIsAuth(false);
     }
-    console.log(appToken);
   }, [pathname]);
 
   const handleClickAuth = () => {
@@ -26,7 +23,6 @@ const Header = ({ context }) => {
       setIsAuth(false);
       navigate("/");
     } else navigate("/login");
-    console.log(appToken);
   };
 
   return (

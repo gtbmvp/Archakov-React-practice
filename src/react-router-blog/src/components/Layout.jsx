@@ -7,7 +7,7 @@ import Footer from "./Footer";
 
 const Layout = () => {
   const [appToken, setAppToken] = React.useState(uuidv4()); //generate initial unique value to prevent localStorage token value bruteforce
-
+  console.log(appToken);
   return (
     <>
       <Header context={[appToken, setAppToken]} />

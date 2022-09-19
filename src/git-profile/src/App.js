@@ -65,7 +65,7 @@ function App() {
         <form className="app-form">
           <input
             onChange={handleSearch}
-            value={fetching ? "Загрузка..." : searchField}
+            value={fetching ? "Loading..." : searchField}
             type="text"
             className="app-input"
             placeholder="Укажите GitHub-аккаунт"
