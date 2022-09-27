@@ -39,8 +39,14 @@
   - generate initial `AppToken` value with [uuid](https://www.npmjs.com/package/uuid) to prevent localStorage token value bruteforce (manually set `token` field in localStorage would never match with `AppToken`);
 
 - **git-profile**: git profiles viewer with debounced auto search and success result URL:
+
   - requests https://api.github.com/users, component fields are filled with received data;
   - failed request sets error object; conditional rendering error message or data;
   - `fetching` state after search execution disables search button to prevent additional clicks and alters input value to `Loading...`;
   - success request add `/?login=data.login` to current URL (`window.history.replaceState` method);
   - auto-search `useEffect` checks if it's mounting (`isMounted` Ref) - if true, `searchField` value is initialized with URL searchParams login field, every `searchField` change (except changing to empty string) `setTimeout(search, 750)`; `clearTimeout` previous timer before next render;
+
+- **useReducer**: todo list with add, delete and edit tasks, check/uncheck on completion; check/uncheck all and clear buttons; tabs with all/active/finished tasks:
+  - `useReducer` hook practice;
+  - material UI components;
+  - _window.confirm/prompt_ confirmation;
