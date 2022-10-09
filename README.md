@@ -1,6 +1,6 @@
 # React practice [course](https://github.com/Archakov06)
 
-##Contents:
+### Contents:
 
 - **tutorial-1**: class and functional components, render data from props;
 - **tutorial-2**: first form (authentication), pure JS interaction with inputs and submit button;
