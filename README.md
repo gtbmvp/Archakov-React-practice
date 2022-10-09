@@ -1,6 +1,6 @@
 # React practice [course](https://github.com/Archakov06)
 
-####Contents:
+##Contents:
 
 - **tutorial-1**: class and functional components, render data from props;
 - **tutorial-2**: first form (authentication), pure JS interaction with inputs and submit button;
@@ -47,6 +47,18 @@
   - auto-search `useEffect` checks if it's mounting (`isMounted` Ref) - if true, `searchField` value is initialized with URL searchParams login field, every `searchField` change (except changing to empty string) `setTimeout(search, 750)`; `clearTimeout` previous timer before next render;
 
 - **useReducer**: todo list with add, delete and edit tasks, check/uncheck on completion; check/uncheck all and clear buttons; tabs with all/active/finished tasks:
+
   - `useReducer` hook practice;
   - material UI components;
   - _window.confirm/prompt_ confirmation;
+
+- **redux-practice**: todo list with add, delete and edit tasks, check/uncheck on completion; check/uncheck all and clear buttons; tabs with all/active/finished tasks:
+  - `redux` without `Redux Toolkit` syntax;
+  - `react-redux` helps our components to interact with Redux store;
+  - `redux-thunk` for dispatching not only plain objects;
+  - `composeWithDevTools` enhancer for debugging;
+  - `combineReducers` for splitting state fields and its reducers;
+  - `syncWithServer` middleware for synchronization local changes with server (only add, edit and delete single post because [mockapi](https://mockapi.io) doesn't provide _PATCH_ method);
+  - dispatching thunk action-creator (`fetchTasks` and `completeTask`):
+    - one to fetch tasks on mounting;
+    - one to check if completing single task completes all (dispatch additional action).
