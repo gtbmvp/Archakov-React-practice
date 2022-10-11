@@ -46,7 +46,7 @@ function App() {
       }
       isMounted.current = true;
     }
-  }, [searchField]);
+  }, [searchField]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSearch = (event) => {
     const { value } = event.target;
