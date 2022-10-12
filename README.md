@@ -26,7 +26,7 @@
   - `useFormContext` hook to provide inputs with _RHF_ methods;
   - _react-router-dom_ and _useNavigate_ hook;
 
-- **react-router-blog**: multipage blog with articles and login form with simple localStorage token authorization; access `/profile` route only if signed in:
+- **react-router-blog** ([deploy at surge](https://gg-react-router-blog.surge.sh/)): multipage blog with articles and login form with simple localStorage token authorization; access `/profile` route only if signed in:
 
   - _react-bootstrap_ components;
   - FullArticle component renders right article by iterating `posts` array to find matching `post.id` with `id` from `useParams` hook;
