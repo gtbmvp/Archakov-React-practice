@@ -38,7 +38,7 @@
   - Header component renders Login/Logout button depending on `isAuth` state (`useEffect` sets it to `true` if `AppToken` === `serverToken`);
   - generate initial `AppToken` value with [uuid](https://www.npmjs.com/package/uuid) to prevent localStorage token value bruteforce (manually set `token` field in localStorage would never match with `AppToken`);
 
-- **git-profile**: git profiles viewer with debounced auto search and success result URL ([deploy at netlify](https://rad-wisp-a65f8e.netlify.app/)):
+- **git-profile** ([deploy at netlify](https://rad-wisp-a65f8e.netlify.app/)): git profiles viewer with debounced auto search and success result URL :
 
   - requests https://api.github.com/users, component fields are filled with received data;
   - failed request sets error object; conditional rendering error message or data;
@@ -52,7 +52,7 @@
   - material UI components;
   - _window.confirm/prompt_ confirmation;
 
-- **redux-practice**: todo list with add, delete and edit tasks, check/uncheck on completion; check/uncheck all and clear buttons; tabs with all/active/finished tasks:
+- **redux-practice** ([deploy at vercel/this repo environment](redux-todo-jetzeny.vercel.app/)) todo list with add, delete and edit tasks, check/uncheck on completion; check/uncheck all and clear buttons; tabs with all/active/finished tasks:
   - `redux` without `Redux Toolkit` syntax;
   - `react-redux` helps our components to interact with Redux store;
   - `redux-thunk` for dispatching not only plain objects;
