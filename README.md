@@ -38,7 +38,7 @@
   - Header component renders Login/Logout button depending on `isAuth` state (`useEffect` sets it to `true` if `AppToken` === `serverToken`);
   - generate initial `AppToken` value with [uuid](https://www.npmjs.com/package/uuid) to prevent localStorage token value bruteforce (manually set `token` field in localStorage would never match with `AppToken`);
 
-- **git-profile**: git profiles viewer with debounced auto search and success result URL:
+- **git-profile**: git profiles viewer with debounced auto search and success result URL ([deploy at netlify](https://rad-wisp-a65f8e.netlify.app/)):
 
   - requests https://api.github.com/users, component fields are filled with received data;
   - failed request sets error object; conditional rendering error message or data;
