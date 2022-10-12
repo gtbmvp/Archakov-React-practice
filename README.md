@@ -52,7 +52,7 @@
   - material UI components;
   - _window.confirm/prompt_ confirmation;
 
-- **redux-practice** ([deploy at vercel/this repo environment](redux-todo-jetzeny.vercel.app/)) todo list with add, delete and edit tasks, check/uncheck on completion; check/uncheck all and clear buttons; tabs with all/active/finished tasks:
+- **redux-practice** ([deploy at vercel/this repo environment](https://redux-todo-jetzeny.vercel.app/)) todo list with add, delete and edit tasks, check/uncheck on completion; check/uncheck all and clear buttons; tabs with all/active/finished tasks:
   - `redux` without `Redux Toolkit` syntax;
   - `react-redux` helps our components to interact with Redux store;
   - `redux-thunk` for dispatching not only plain objects;
