@@ -1,15 +1,18 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { Tabs, Tab } from "@mui/material";
 
 import { switchFilter } from "../redux/actions/filter";
 
-export const Filter = () => {
-  const dispatch = useDispatch();
-  const filter = useSelector((state) => state.filter);
+import { useAppSelector } from "../redux/store";
 
-  const handleTabChange = (e, newFilter) => {
+import { FilterType } from "../redux/types";
+
+export const Filter: React.FC = () => {
+  const dispatch = useDispatch();
+  const filter = useAppSelector((state) => state.filter);
+
+  const handleTabChange = (e: unknown, newFilter: FilterType) => {
     dispatch(switchFilter(newFilter));
   };
 

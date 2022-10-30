@@ -1,5 +1,11 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
+import {
+  createStore,
+  combineReducers,
+  applyMiddleware,
+  Middleware,
+} from "redux";
+import { useSelector, TypedUseSelectorHook, useDispatch } from "react-redux";
+import thunk, { ThunkDispatch } from "redux-thunk";
 import { composeWithDevTools } from "@redux-devtools/extension";
 
 import { tasksReducer } from "./reducers/tasks";
@@ -12,7 +18,7 @@ const rootReducer = combineReducers({
   allChecked: allCheckedReducer,
 });
 
-const syncWithServer =
+const syncWithServer: Middleware<{}, RootState> =
   ({ dispatch, getState }) =>
   (next) =>
   (action) => {
@@ -62,5 +68,12 @@ const store = createStore(
     // other store enhancers if any
   )
 );
+
+export type RootState = ReturnType<typeof rootReducer>;
+export type RootActions = ReturnType<typeof store.dispatch>;
+
+export type AppDispatch = ThunkDispatch<RootState, any, RootActions>;
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export default store;

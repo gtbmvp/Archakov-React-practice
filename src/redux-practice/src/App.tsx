@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
 
 import { Paper, Divider, Button, List } from "@mui/material";
 
@@ -18,25 +17,27 @@ import {
   fetchTasks,
 } from "./redux/actions/tasks";
 
+import { useAppSelector, useAppDispatch } from "./redux/store";
+
 function App() {
-  const dispatch = useDispatch();
-  const tasks = useSelector((state) => state.tasks);
-  const filter = useSelector((state) => state.filter);
-  const allChecked = useSelector((state) => state.allChecked);
+  const dispatch = useAppDispatch();
+  const tasks = useAppSelector((state) => state.tasks);
+  const filter = useAppSelector((state) => state.filter);
+  const allChecked = useAppSelector((state) => state.allChecked);
 
   React.useEffect(() => {
     dispatch(fetchTasks());
   }, []);
 
-  const handleClickAdd = (obj) => {
+  const handleClickAdd = (obj: { text: string; completed: boolean }) => {
     dispatch(addTask(obj));
   };
 
-  const handleClickEdit = (id, newText) => {
+  const handleClickEdit = (id: number, newText: string) => {
     dispatch(editTask(id, newText));
   };
 
-  const handleClickDelete = (id) => {
+  const handleClickDelete = (id: number) => {
     dispatch(deleteTask(id));
   };
 
@@ -46,7 +47,7 @@ function App() {
     }
   };
 
-  const handleClickToggle = (id) => {
+  const handleClickToggle = (id: number) => {
     dispatch(completeTask(id));
   };
 

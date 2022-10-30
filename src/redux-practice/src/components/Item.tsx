@@ -6,7 +6,21 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
-export const Item = ({ text, completed, onRemove, onCheck, onEdit }) => {
+interface ItemProps {
+  text: string;
+  completed: boolean;
+  onRemove: () => void;
+  onCheck: () => void;
+  onEdit: (newText: string) => void;
+}
+
+export const Item: React.FC<ItemProps> = ({
+  text,
+  completed,
+  onRemove,
+  onCheck,
+  onEdit,
+}) => {
   const handleClickDelete = () => {
     window.confirm("Are you sure about that?") && onRemove();
   };

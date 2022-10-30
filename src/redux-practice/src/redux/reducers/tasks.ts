@@ -1,9 +1,11 @@
-export function tasksReducer(state = [], action) {
+import { Task, Actions, TasksTypes } from "../types";
+
+export function tasksReducer(state: Task[] = [], action: Actions) {
   switch (action.type) {
-    case "FETCH":
+    case TasksTypes.GET_TASKS:
       return [...state, ...action.payload];
 
-    case "ADD":
+    case TasksTypes.ADD_TASK:
       return [
         ...state,
         {
@@ -12,30 +14,30 @@ export function tasksReducer(state = [], action) {
         },
       ];
 
-    case "EDIT_ONE":
+    case TasksTypes.EDIT_TASK:
       return state.map((task) =>
         task.id === action.payload.id
           ? { ...task, text: action.payload.newText }
           : task
       );
 
-    case "DELETE_ONE":
+    case TasksTypes.DELETE_TASK:
       return state.filter((task) => task.id !== action.payload);
 
-    case "CHECK_ONE":
+    case TasksTypes.CHECK_TASK:
       return state.map((task) =>
         task.id === action.payload
           ? { ...task, completed: !task.completed }
           : task
       );
 
-    case "CHECK_ALL":
+    case TasksTypes.COMPLETE_ALL:
       return state.map((task) => ({ ...task, completed: true }));
 
-    case "UNCHECK_ALL":
+    case TasksTypes.UNCOMPLETE_ALL:
       return state.map((task) => ({ ...task, completed: false }));
 
-    case "DELETE_ALL":
+    case TasksTypes.DELETE_ALL:
       return [];
 
     default:
