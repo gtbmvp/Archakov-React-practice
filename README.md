@@ -61,4 +61,5 @@
   - `syncWithServer` middleware for synchronization local changes with server (only add, edit and delete single post because [mockapi](https://mockapi.io) doesn't provide _PATCH_ method);
   - dispatching thunk action-creator (`fetchTasks` and `completeTask`):
     - one to fetch tasks on mounting;
-    - one to check if completing single task completes all (dispatch additional action).
+    - one to check if completing single task completes all (dispatch additional action);
+  - _Typescript_ typing.
