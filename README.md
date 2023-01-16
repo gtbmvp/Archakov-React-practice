@@ -34,7 +34,7 @@
   - Login component requests https://mentor.archakov.im/api with urlencoded `email` and `password` form fields; if `response.ok` our Application gets token(`serverToken`) from server and saves in localStorage;
   - received `serverToken` is also stored in Layout state (Layout component pass `setAppToken` to Login component using `useOutletContext` hook);
   - after success authorization `useNavigate` hook redirects to `/profile`;
-  - Profile and Header components check if localStorage token is equil to Layout state token (`serverToken` === `AppToken`);
+  - Profile and Header components check if localStorage token is equal to Layout state token (`serverToken` === `AppToken`);
   - Header component renders Login/Logout button depending on `isAuth` state (`useEffect` sets it to `true` if `AppToken` === `serverToken`);
   - generate initial `AppToken` value with [uuid](https://www.npmjs.com/package/uuid) to prevent localStorage token value bruteforce (manually set `token` field in localStorage would never match with `AppToken`);
 
